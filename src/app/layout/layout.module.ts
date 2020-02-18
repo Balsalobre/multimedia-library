@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
+import { GridComponent } from '../shared/grid/grid.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { LayoutComponent } from './layout/layout.component';
     MainContentComponent,
     FooterComponent,
     LayoutComponent,
+    GridComponent,
   ],
   imports: [
     CommonModule,
