@@ -5,6 +5,8 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { GridComponent } from '../shared/grid/grid.component';
+import { CardInfoComponent } from '../shared/card-info/card-info.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,9 +15,11 @@ import { GridComponent } from '../shared/grid/grid.component';
     FooterComponent,
     LayoutComponent,
     GridComponent,
+    CardInfoComponent,
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
   ],
   exports: [
     LayoutComponent,

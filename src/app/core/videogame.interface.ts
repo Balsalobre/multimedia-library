@@ -2,5 +2,8 @@ export interface VideoGame {
     title: string;
     steamUrl: string;
     publisher: string;
-    generes: string[];
+    date: Date;
+    description: string;
+    genres: string[];
+    images: string[];
 }

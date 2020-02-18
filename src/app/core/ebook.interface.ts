@@ -3,9 +3,10 @@ export interface Ebook {
     title: string;
     subtitle?: string;
     author: string;
-    published: string;
+    date: Date;
     publisher: string;
     pages: number;
     description: string;
     website: string;
+    images: string[];
 }

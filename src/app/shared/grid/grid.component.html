@@ -1,1 +1,18 @@
-<p>grid works!</p>
+<div class="grid-container">
+    <div class="wrapper">
+        <div class="items">
+            <div class="row">
+                <div class="item" *ngFor="let item of itemMixed">
+                    <app-card-info
+                        [img]="item.images[0]"
+                        [title]="item.title"
+                        [description]="item.description" [date]="item.date">
+                    </app-card-info>
+                </div>
+            </div>
+        </div>
+        <div class="filters">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, temporibus.
+        </div>
+    </div>
+</div>
