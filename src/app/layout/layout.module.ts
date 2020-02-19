@@ -7,6 +7,10 @@ import { LayoutComponent } from './layout/layout.component';
 import { GridComponent } from '../shared/grid/grid.component';
 import { CardInfoComponent } from '../shared/card-info/card-info.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from '../shared/pipes/search.pipe';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DateSearchPipe } from '../shared/pipes/sort-date.pipe';
+import { FilterListComponent } from '../shared/filter-list/filter-list.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,15 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutComponent,
     GridComponent,
     CardInfoComponent,
+    FilterListComponent,
+    SearchPipe,
+    DateSearchPipe,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     LayoutComponent,

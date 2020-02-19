@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isShown = false;
+  search = new FormControl();
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
+    this.search.valueChanges.subscribe(data => {
+      this.searchService.updateSearchSubject(data);
+    });
   }
-
 }

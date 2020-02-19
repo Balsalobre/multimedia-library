@@ -1,0 +1,19 @@
+:host {
+    .list-group {
+        .list-group-item {
+            .order-item{
+                padding-left: 1.2rem;
+                .form-check-input {
+                    height: 17px;
+                    width: 17px;
+                }
+            }
+        }
+        .active {
+            z-index: 1;
+            background-color: #dd713e;
+            border-color: #b95323;
+            font-size: 1.2rem;
+        }
+    }
+}

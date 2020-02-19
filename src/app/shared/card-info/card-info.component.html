@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="card-title">{{ title }}</div>
             <div class="card-subtitle mb-2 text-muted">{{ description }}</div>
-            <div class="item-date">{{ date }}</div>
+            <div class="item-date">{{ date | date: 'dd/MM/yy' }}</div>
         </div>
     </div>
 </div>

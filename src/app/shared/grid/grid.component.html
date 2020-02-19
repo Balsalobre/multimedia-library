@@ -2,17 +2,22 @@
     <div class="wrapper">
         <div class="items">
             <div class="row">
-                <div class="item" *ngFor="let item of itemMixed">
-                    <app-card-info
-                        [img]="item.images[0]"
-                        [title]="item.title"
-                        [description]="item.description" [date]="item.date">
+                <div class="item" *ngFor="let item of itemsMixed | searchByTitle:searchText">
+                    <app-card-info [img]="item.images[0]" [title]="item.title" [description]="item.description"
+                        [date]="item.date">
                     </app-card-info>
                 </div>
+
+                <!-- <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">No existen coincidencias</h1>
+                        <p class="lead">Por favor realice otra búsqueda con otros parámetros</p>
+                    </div>
+                </div> -->
             </div>
         </div>
         <div class="filters">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, temporibus.
+            <app-filter-list></app-filter-list>
         </div>
     </div>
 </div>
