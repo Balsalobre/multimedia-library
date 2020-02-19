@@ -9,7 +9,6 @@ import { CardInfoComponent } from '../shared/card-info/card-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from '../shared/pipes/search.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DateSearchPipe } from '../shared/pipes/sort-date.pipe';
 import { FilterListComponent } from '../shared/filter-list/filter-list.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { FilterListComponent } from '../shared/filter-list/filter-list.component
     CardInfoComponent,
     FilterListComponent,
     SearchPipe,
-    DateSearchPipe,
   ],
   imports: [
     CommonModule,

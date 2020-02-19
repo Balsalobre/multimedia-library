@@ -1,4 +1,5 @@
 export interface Ebook {
+    type: string;
     isbn?: string;
     title: string;
     subtitle?: string;

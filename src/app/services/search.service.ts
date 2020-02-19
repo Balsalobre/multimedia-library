@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Filters } from '../core/filters.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class SearchService {
 
   private searchSubject = new BehaviorSubject<string>(null);
-  private filterSubject = new BehaviorSubject<string>(null);
+  private filterSubject = new BehaviorSubject<Filters>(null);
 
   constructor() { }
 
@@ -15,7 +16,7 @@ export class SearchService {
     this.searchSubject.next(data);
   }
 
-  updateFilterSubject(data: string) {
+  updateFilterSubject(data: Filters) {
     this.filterSubject.next(data);
   }
 
@@ -23,7 +24,7 @@ export class SearchService {
     return this.searchSubject.asObservable();
   }
 
-  onChangeFilterSubject(): Observable<string> {
+  onChangeFilterSubject(): Observable<Filters> {
     return this.filterSubject.asObservable();
   }
 }

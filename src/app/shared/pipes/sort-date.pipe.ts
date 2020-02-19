@@ -1,16 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'dateSearch'
+  name: 'sortDate'
 })
-export class DateSearchPipe implements PipeTransform {
+export class SortDatePipe implements PipeTransform {
 
-  transform(items: any[], searchDate: string): any[] {
-    if (!items || !searchDate) {
-      return items;
-    }
-    return items.filter(item =>
-      item.date === new Date(searchDate));
+  transform(value: Array<any>): Array<any> {
+    if (!value) { return []; }
+    return value.sort((a, b) => {
+      return <any> new Date(a.date) - <any>new Date(b.date)  ;
+    });
   }
 
 }

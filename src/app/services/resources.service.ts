@@ -22,11 +22,12 @@ export class ResourcesService {
     const transformData = movies.reduce((p, c) => {
       const item = {
         ...c,
+        type: 'movie',
         date: new Date(c.released),
         description: c.plot
       };
       const { plot, released, rated, year, language, metascore,
-        imdbRating, imdbID, writer, type, response, ...rest } = item;
+        imdbRating, imdbID, writer, response, ...rest } = item;
       p.push(rest);
       return p;
     }, []);
@@ -36,7 +37,7 @@ export class ResourcesService {
   async getAllEbooks(): Promise<Ebook[]> {
     const data: any = await this.http.get('./assets/json/ebooks.json').toPromise();
     const eBooks = data.books.reduce((p, c) => {
-      const item = { ...c, date: new Date(c.published), images: ['./assets/img/placeholder.jpg'] };
+      const item = { ...c, type: 'ebook', date: new Date(c.published), images: ['./assets/img/placeholder.jpg'] };
       const { published, ...rest } = item;
       p.push(rest);
       return p;
@@ -49,6 +50,7 @@ export class ResourcesService {
     const videoGames = data.reduce((p, c) => {
       const item = {
         ...c,
+        type: 'videogame',
         images: ['./assets/img/placeholder.jpg'],
         description: 'Aún no tenemos descripción para este juego',
         date: this.randomDate(new Date(2017, 0, 1), new Date()),

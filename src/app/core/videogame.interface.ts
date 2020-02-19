@@ -1,4 +1,5 @@
 export interface VideoGame {
+    type: string;
     title: string;
     steamUrl: string;
     publisher: string;

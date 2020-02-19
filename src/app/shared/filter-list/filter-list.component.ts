@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SearchService } from 'src/app/services/search.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Filters } from 'src/app/core/filters.interface';
 
 @Component({
   selector: 'app-filter-list',
@@ -8,6 +10,8 @@ import { SearchService } from 'src/app/services/search.service';
   styleUrls: ['./filter-list.component.scss']
 })
 export class FilterListComponent implements OnInit {
+
+  state = false;
 
   orderItems = [
     {
@@ -19,7 +23,7 @@ export class FilterListComponent implements OnInit {
       target: 'alphabetic'
     },
     {
-      name: 'Tipo',
+      name: 'Películas',
       target: 'type'
     },
     {
@@ -28,15 +32,28 @@ export class FilterListComponent implements OnInit {
     }
   ];
 
-  firstname = new FormControl('');
+
+  orderItemsForm: FormGroup;
+
   constructor(
     private searchService: SearchService,
-  ) { }
+    private formBuilder: FormBuilder
+  ) {
+    this.createForm();
+   }
 
   ngOnInit() {
+    this.orderItemsForm.valueChanges.subscribe(data => {
+      this.searchService.updateFilterSubject(data);
+    });
   }
 
-  orderItem(item: string) {
-    this.searchService.updateFilterSubject(item);
+  createForm() {
+    this.orderItemsForm = this.formBuilder.group({
+      creation: [],
+      alphabetic: [],
+      type: [],
+      image: [],
+    });
   }
 }
