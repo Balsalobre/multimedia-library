@@ -40,7 +40,6 @@ export class GridComponent implements OnInit {
       if (data) {
         console.log(data);
         this.itemsMixed.unshift(data);
-        console.log('>>>>>>>>>>>>', this.itemsMixed);
       }
     });
 
@@ -73,4 +72,10 @@ export class GridComponent implements OnInit {
     });
   }
 
+  reciveEvent(item: number) {
+    if (item === 0 ) {
+      this.itemsMixed.shift();
+    }
+    this.itemsMixed.splice(item, item);
+  }
 }

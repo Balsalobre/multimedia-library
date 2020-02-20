@@ -2,9 +2,13 @@
     <div class="wrapper">
         <div class="items">
             <div class="row">
-                <div class="item" *ngFor="let item of itemsMixed | searchByTitle:searchText">
-                    <app-card-info [img]="item.images[0]" [title]="item.title" [description]="item.description"
-                        [date]="item.date">
+                <div class="item" *ngFor="let item of itemsMixed | searchByTitle:searchText; index as i">
+                    <app-card-info
+                        [img]="item.images[0]"
+                        [title]="item.title"
+                        [description]="item.description"
+                        [date]="item.date"
+                        (removeItem)="reciveEvent(i)">
                     </app-card-info>
                 </div>
 
