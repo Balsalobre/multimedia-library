@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-card-info',
@@ -11,10 +12,16 @@ export class CardInfoComponent implements OnInit {
   @Input() title: string;
   @Input() description: string;
   @Input() date: Date;
+  @Output() removeItem = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  clickRemoveElement(event: Event) {
+    this.removeItem.emit('remove');
+    console.log(event);
   }
 
 }

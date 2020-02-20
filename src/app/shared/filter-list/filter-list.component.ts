@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { SearchService } from 'src/app/services/search.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Filters } from 'src/app/core/filters.interface';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalFormComponent } from '../modal-form/modal-form.component';
 
 @Component({
   selector: 'app-filter-list',
@@ -10,8 +10,6 @@ import { Filters } from 'src/app/core/filters.interface';
   styleUrls: ['./filter-list.component.scss']
 })
 export class FilterListComponent implements OnInit {
-
-  state = false;
 
   orderItems = [
     {
@@ -32,12 +30,14 @@ export class FilterListComponent implements OnInit {
     }
   ];
 
-
+  state = false;
   orderItemsForm: FormGroup;
+  bsModalRef: BsModalRef;
 
   constructor(
     private searchService: SearchService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalService: BsModalService
   ) {
     this.createForm();
    }
@@ -56,4 +56,13 @@ export class FilterListComponent implements OnInit {
       image: [],
     });
   }
+
+  openModal() {
+    const initialState = {
+      title: 'Añadir un elemento a la lista',
+    };
+    this.bsModalRef = this.modalService.show(ModalFormComponent, {initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
 }

@@ -10,6 +10,9 @@ import { SortDatePipe } from './shared/pipes/sort-date.pipe';
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { TypePipe } from './shared/pipes/type.pipe';
 import { HasImagePipe } from './shared/pipes/has-image.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,15 @@ import { HasImagePipe } from './shared/pipes/has-image.pipe';
     HomeModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,
+    }),
+    ReactiveFormsModule,
+    FormsModule,
+    ModalModule.forRoot(),
   ],
   providers: [
     SortDatePipe,

@@ -4,6 +4,7 @@ import { SearchService } from 'src/app/services/search.service';
 import { SortDatePipe } from '../pipes/sort-date.pipe';
 import { SortPipe } from '../pipes/sort.pipe';
 import { TypePipe } from '../pipes/type.pipe';
+import { HasImagePipe } from '../pipes/has-image.pipe';
 
 @Component({
   selector: 'app-grid',
@@ -23,6 +24,7 @@ export class GridComponent implements OnInit {
     private sortDate: SortDatePipe,
     private sort: SortPipe,
     private type: TypePipe,
+    private hasImage: HasImagePipe,
   ) { }
 
   async ngOnInit() {
@@ -31,7 +33,16 @@ export class GridComponent implements OnInit {
     const videoGames = await this.resourcesService.getAllVideoGames();
     this.itemsMixed = [...movies, ...eBooks, ...videoGames];
     this.originalData = this.itemsMixed;
-    console.log(this.itemsMixed);
+
+    console.log('From service', this.itemsMixed);
+
+    this.resourcesService.onItemDataChange().subscribe(data => {
+      if (data) {
+        console.log(data);
+        this.itemsMixed.unshift(data);
+        console.log('>>>>>>>>>>>>', this.itemsMixed);
+      }
+    });
 
     this.searchService.onChangeDataSearch().subscribe(data => {
       this.searchText = data;
@@ -41,13 +52,21 @@ export class GridComponent implements OnInit {
       if (data) {
         switch (true) {
           case (data.creation):
+            this.itemsMixed = this.originalData;
             this.itemsMixed = this.sortDate.transform(this.itemsMixed);
             break;
           case (data.alphabetic):
             this.itemsMixed = this.sort.transform(this.itemsMixed);
             break;
           case (data.type):
-            this.itemsMixed =  this.type.transform(this.itemsMixed, 'movie');
+            this.itemsMixed = this.type.transform(this.itemsMixed, 'movie');
+            break;
+          case (data.image):
+            this.itemsMixed = this.hasImage.transform(this.itemsMixed);
+            break;
+          case (!data.image || !data.type || !data.alphabetic || !data.creation):
+            console.log('entra');
+            this.itemsMixed = this.originalData;
             break;
         }
       }

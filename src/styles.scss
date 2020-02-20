@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker&display=swap');
+@import '~ngx-toastr/toastr';
 
 html, body {
     height: 100%;
+}
+
+bs-datepicker-container {
+    z-index: 999999;
 }

@@ -3,15 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { Movie } from '../core/movie.interface';
 import { Ebook } from '../core/ebook.interface';
 import { VideoGame } from '../core/videogame.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourcesService {
 
+  private itemDataSubject = new BehaviorSubject<any>(null);
+
   constructor(
     private http: HttpClient,
   ) { }
+
+  updateItemDataSubject(data: any) {
+    this.itemDataSubject.next(data);
+  }
+
+  onItemDataChange(): Observable<any> {
+    return this.itemDataSubject.asObservable();
+  }
 
   private randomDate(start: Date, end: Date) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));

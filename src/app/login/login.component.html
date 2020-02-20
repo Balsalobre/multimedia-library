@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div class="login-wrapper">
+    <div class="login-page">
+        <div class="logo">Multimedia Library</div>
+        <div class="form">
+
+          <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <input type="text" formControlName="userName" placeholder="Usuario"/>
+            <input type="password"  formControlName="password" placeholder="Contraseña"/>
+            <button type="submit">Login</button>
+          </form>
+        
+        </div>
+      </div>
+</div>

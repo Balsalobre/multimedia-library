@@ -10,6 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchPipe } from '../shared/pipes/search.pipe';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterListComponent } from '../shared/filter-list/filter-list.component';
+import { ModalFormComponent } from '../shared/modal-form/modal-form.component';
+import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
+
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { esLocale } from 'ngx-bootstrap/locale';
+defineLocale('es', esLocale);
 
 @NgModule({
   declarations: [
@@ -20,6 +26,7 @@ import { FilterListComponent } from '../shared/filter-list/filter-list.component
     GridComponent,
     CardInfoComponent,
     FilterListComponent,
+    ModalFormComponent,
     SearchPipe,
   ],
   imports: [
@@ -27,9 +34,17 @@ import { FilterListComponent } from '../shared/filter-list/filter-list.component
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BsDatepickerModule.forRoot(),
   ],
   exports: [
     LayoutComponent,
-  ]
+  ],
+  entryComponents: [
+    ModalFormComponent,
+  ],
 })
-export class LayoutModule { }
+export class LayoutModule {
+  constructor( private bsLocaleService: BsLocaleService) {
+    this.bsLocaleService.use('es');
+ }
+}

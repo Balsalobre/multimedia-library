@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class HasImagePipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
-    return null;
+  transform(value: Array<any>): Array<any> {
+    if (!value) {return []; }
+    return value.filter(x => x.images[0].split('/')[1] !== 'assets');
   }
 
 }

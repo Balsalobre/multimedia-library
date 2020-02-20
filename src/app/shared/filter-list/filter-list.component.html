@@ -1,13 +1,20 @@
-<ul class="list-group">
-    <li class="list-group-item active">Ordenar por:</li>
-    <form [formGroup]="orderItemsForm">
-        <li class="list-group-item" *ngFor="let item of orderItems; let i = index">
-            <div class="order-item">
-                <input class="form-check-input" type="checkbox" formControlName="{{item.target}}">
-                <label class="form-check-label" for="defaultCheck1">
-                    {{ item.name }}
-                </label>
-            </div>
-        </li>
-    </form>
-</ul>
+<div class="wrapper">
+    <div class="wrapper-filters">
+        <ul class="list-group">
+            <li class="list-group-item active">Ordenar por:</li>
+            <form [formGroup]="orderItemsForm">
+                <li class="list-group-item" *ngFor="let item of orderItems; let i = index">
+                    <div class="order-item">
+                        <input class="form-check-input" type="checkbox" formControlName="{{item.target}}">
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{ item.name }}
+                        </label>
+                    </div>
+                </li>
+            </form>
+        </ul>
+    </div>
+    <div class="btn-to-form">
+        <button type="button" class="btn btn-primary" (click)="openModal()">Crear un nuevo elemento</button>
+    </div>
+</div>
