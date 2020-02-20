@@ -34,11 +34,8 @@ export class GridComponent implements OnInit {
     this.itemsMixed = [...movies, ...eBooks, ...videoGames];
     this.originalData = this.itemsMixed;
 
-    console.log('From service', this.itemsMixed);
-
     this.resourcesService.onItemDataChange().subscribe(data => {
       if (data) {
-        console.log(data);
         this.itemsMixed.unshift(data);
       }
     });
@@ -64,7 +61,6 @@ export class GridComponent implements OnInit {
             this.itemsMixed = this.hasImage.transform(this.itemsMixed);
             break;
           case (!data.image || !data.type || !data.alphabetic || !data.creation):
-            console.log('entra');
             this.itemsMixed = this.originalData;
             break;
         }
