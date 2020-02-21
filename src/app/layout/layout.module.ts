@@ -12,7 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterListComponent } from '../shared/filter-list/filter-list.component';
 import { ModalFormComponent } from '../shared/modal-form/modal-form.component';
 import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
-
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
 defineLocale('es', esLocale);
@@ -35,6 +35,7 @@ defineLocale('es', esLocale);
     ReactiveFormsModule,
     FormsModule,
     BsDatepickerModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   exports: [
     LayoutComponent,

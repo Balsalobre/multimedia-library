@@ -11,6 +11,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ResourcesService {
 
   private itemDataSubject = new BehaviorSubject<any>(null);
+  private itemEditSubject = new BehaviorSubject<any>(null);
+  private itemArrayToEdit = new BehaviorSubject<any>(null);
 
   constructor(
     private http: HttpClient,
@@ -18,6 +20,22 @@ export class ResourcesService {
 
   updateItemDataSubject(data: any) {
     this.itemDataSubject.next(data);
+  }
+
+  updateItemEditSubject(data: any) {
+    this.itemEditSubject.next(data);
+  }
+
+  updateItemArrayToEdit(data: any) {
+    this.itemArrayToEdit.next(data);
+  }
+
+  onItemArrayToEditChange(): Observable<any> {
+    return this.itemArrayToEdit.asObservable();
+  }
+
+  onItemEditChange(): Observable<any> {
+    return this.itemEditSubject.asObservable();
   }
 
   onItemDataChange(): Observable<any> {

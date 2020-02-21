@@ -1,7 +1,8 @@
 <div class="col-auto mb-3">
     <div class="card" style="width: 12.3rem;">
         <button class="over-button" (click)="clickRemoveElement($event)">X</button>
-        <img class="card-img-top" [src]="img">
+        <img class="card-img-top" [src]="img" (click)=clickEditElement($event)
+        tooltip="Haga click en la imagen para editar el elemento.">
         <div class="card-body">
             <div class="card-title">{{ title }}</div>
             <div class="card-subtitle mb-2 text-muted">{{ description }}</div>

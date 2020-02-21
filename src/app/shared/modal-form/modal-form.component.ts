@@ -16,6 +16,7 @@ export class ModalFormComponent implements OnInit {
   list: any[] = [];
   bsValue = new Date();
   itemForm: FormGroup;
+  isTheFormEmpty = true;
 
   constructor(
     public resourcesService: ResourcesService,
@@ -27,6 +28,20 @@ export class ModalFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.resourcesService.onItemEditChange().subscribe(data => {
+      if (data.empty) {
+        this.itemForm.reset();
+        this.itemForm.controls.date.setValue(new Date());
+        this.itemForm.controls.type.setValue('movie');
+      } else {
+        this.isTheFormEmpty = false;
+        this.itemForm.controls.title.setValue(data.title);
+        this.itemForm.controls.description.setValue(data.description);
+        this.itemForm.controls.images.setValue(data.images[0]);
+        this.itemForm.controls.date.setValue(data.date);
+        this.itemForm.controls.type.setValue(data.type);
+      }
+    });
   }
 
   createItemForm() {
@@ -42,15 +57,17 @@ export class ModalFormComponent implements OnInit {
   get f() { return this.itemForm.controls; }
 
   onSubmit() {
-    if (!this.itemForm.valid) {
-      this.toastrService.error('Rellene los campos correctamente', 'Error');
-      return;
-    }
     this.itemForm.value.images = [ this.itemForm.value.images ];
     const formData = this.itemForm.value;
-    this.resourcesService.updateItemDataSubject(formData);
-    this.itemForm.reset();
-    this.toastrService.success('!Nuevo elemento guardado!', 'OK!');
+    if (this.isTheFormEmpty) {
+      this.resourcesService.updateItemDataSubject(formData);
+      this.itemForm.reset();
+      this.toastrService.success('!Nuevo elemento Guardado!', 'OK!');
+      this.bsModalRef.hide();
+    } else {
+      this.resourcesService.updateItemArrayToEdit(formData);
+      this.toastrService.success('!Nuevo elemento Modificado!', 'OK!');
+      this.bsModalRef.hide();
+    }
   }
-
 }

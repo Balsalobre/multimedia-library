@@ -12,6 +12,7 @@ export class CardInfoComponent implements OnInit {
   @Input() description: string;
   @Input() date: Date;
   @Output() removeItem = new EventEmitter<string>();
+  @Output() editElement = new EventEmitter<string>();
 
   constructor() { }
 
@@ -22,4 +23,7 @@ export class CardInfoComponent implements OnInit {
     this.removeItem.emit(event.type);
   }
 
+  clickEditElement(event: Event) {
+    this.editElement.emit(event.type);
+  }
 }

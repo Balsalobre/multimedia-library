@@ -8,7 +8,8 @@
                         [title]="item.title"
                         [description]="item.description"
                         [date]="item.date"
-                        (removeItem)="reciveEvent(i)">
+                        (removeItem)="reciveEvent(i)"
+                        (editElement)="editElement(i, item)">
                     </app-card-info>
                 </div>
 
