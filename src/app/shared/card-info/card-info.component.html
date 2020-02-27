@@ -1,11 +1,15 @@
 <div class="col-auto mb-3">
     <div class="card" style="width: 12.3rem;">
         <button class="over-button" (click)="clickRemoveElement($event)">X</button>
-        <img class="card-img-top" [src]="img" (click)=clickEditElement($event)
-        tooltip="Haga click en la imagen para editar el elemento.">
+        <div class="img-wrapper">
+            <div class="edit-card"><span class="text-edit" (click)=clickEditElement($event)>Editar elemento</span></div>
+            <img class="card-img-top" [src]="img">
+        </div>
         <div class="card-body">
             <div class="card-title">{{ title }}</div>
-            <div class="card-subtitle mb-2 text-muted">{{ description }}</div>
+            <div class="card-subtitle mb-2 text-muted">{{ description | slice:0:40 }}... 
+                <span> <a cardlink [showDescription]="true" [tooltip]="description" placement="bottom">Leer más</a></span>
+            </div>
             <div class="item-date">{{ date | date: 'dd/MM/yy' }}</div>
         </div>
     </div>

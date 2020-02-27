@@ -1,11 +1,32 @@
 .over-button {
-    position: absolute;
-    right: 0;
-    background-color: #3535353f;
-    color: #ffffff;
-    font-weight: 700;
-    border: none;
+  position: absolute;
+  right: 0;
+  background-color: #3535353f;
+  color: #ffffff;
+  font-weight: 700;
+  border: none;
 }
+
+.edit-card {
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+  height: 80px;
+  width: 140px;
+  background: rgb(255, 255, 255);
+  font-weight: 500;
+  color: #222222;
+  background: linear-gradient(163deg, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 0) 49%);
+  
+  .text-edit {
+      cursor: pointer;
+  }
+}
+
+.img-wrapper:hover .edit-card {
+  visibility: visible;
+}
+
 .card-img-top {
-    cursor: pointer;
+  // cursor: pointer;
 }

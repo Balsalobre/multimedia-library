@@ -15,6 +15,7 @@ import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
+import { CardlinkDirective } from '../shared/directives/cardlink.directive';
 defineLocale('es', esLocale);
 
 @NgModule({
@@ -28,6 +29,7 @@ defineLocale('es', esLocale);
     FilterListComponent,
     ModalFormComponent,
     SearchPipe,
+    CardlinkDirective,
   ],
   imports: [
     CommonModule,
