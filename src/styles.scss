@@ -1,11 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker&display=swap");
+@import "~ngx-toastr/toastr";
 
-@import url('https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker&display=swap');
-@import '~ngx-toastr/toastr';
-
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 bs-datepicker-container {
-    z-index: 999999;
+  z-index: 999999;
+}
+
+@media (max-width: 991px) {
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 100vw;
+  }
+
+  #container {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 886px) {
+    .grid-container {
+        .wrapper {
+            .filters {
+                min-width: 168.641px;
+                padding-right: 9px;
+            }
+        }
+    }
+}
+
+@media (max-width: 579px) {
+    .grid-container {
+        .wrapper {
+            .filters {
+                display: none;
+            }
+        }
+    }
+    #main-wrapper {
+        grid-template-columns: 99% 1%;
+    }
+}
+
+@media (max-width: 491px) {
+    #header {
+       height: 6rem;
+    }
+}
+
+@media (max-width: 479px) {
+    #card {
+        width: 11.3rem !important;
+    }
+}
+
+@media (max-width: 436px) {
+    #card {
+        width: 10rem !important;
+    }
+}
+
+@media (max-width: 394px) {
+    #card {
+        width: 9.5rem !important;
+    }
+}
+
+@media (max-width: 379px) {
+    #card {
+        width: 19rem !important;
+    }
 }
